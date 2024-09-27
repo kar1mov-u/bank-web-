@@ -1,0 +1,146 @@
+/* Global Styles */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main Section */
+main {
+    flex: 1; /* This allows the main section to grow and fill the available space */
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body */
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Main Section */
+.intro {
+    text-align: center;
+    padding: 50px;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+.intro h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.intro p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Features Section */
+.features {
+    padding: 20px;
+    text-align: center;
+}
+
+.features h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.feature-box {
+    background-color: #fff;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    width: 30%;
+}
+
+.feature-box h3 {
+    margin-bottom: 10px;
+}
+
+/* Footer */
+footer {
+    background-color: #333; /* Footer background */
+    color: #fff; /* Footer text color */
+    text-align: center; /* Center text */
+    padding: 20px; /* Add some padding */
+    width: 100%; /* Full width */
+}
+
+/* Social Media Links */
+.social-media {
+    margin-top: 10px; /* Add some space above the links */
+}
+
+.social-media a {
+    color: #fff; /* Link color */
+    text-decoration: none; /* Remove underline */
+    margin: 0 10px; /* Add spacing between links */
+    transition: color 0.3s; /* Smooth transition for hover effect */
+}
+
+.social-media a:hover {
+    color: #007bff; /* Change color on hover */
+}

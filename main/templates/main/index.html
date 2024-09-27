@@ -1,0 +1,29 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+    {% block title %}Online Bank{% endblock  %}
+    {% block content %}
+    <!-- Main Section -->
+        <section class="intro">
+            <h1>Welcome to Online Banking</h1>
+            <p>Manage your accounts, transfer money, and more from the comfort of your home.</p>
+            <a href="#" class="btn">Get Started</a>
+        </section>
+
+        <section class="features">
+            <h2>Our Services</h2>
+            <div class="feature-box">
+                <h3>Manage Accounts</h3>
+                <p>View account balances and transaction history.</p>
+            </div>
+            <div class="feature-box">
+                <h3>Transfer Money</h3>
+                <p>Send money to other users quickly and securely.</p>
+            </div>
+            <div class="feature-box">
+                <h3>Support</h3>
+                <p>Our 24/7 support is here to help you with any issue.</p>
+            </div>
+        </section>
+        {% endblock  %}
+
