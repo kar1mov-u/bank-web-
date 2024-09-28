@@ -63,6 +63,17 @@ header nav {
     font-size: 1.5rem;
     font-weight: bold;
 }
+.logo a {
+    color: white; /* Normal state */
+}
+
+.logo a:hover {
+    color: lightgray; /* Change color on hover */
+}
+
+.logo a:visited {
+    color: white; /* Color for visited links */
+}
 
 /* Main Section */
 .intro {

@@ -12,11 +12,11 @@
     <!-- Header Section -->
     <header>
         <nav>
-            <div class="logo">BankApp</div>
+            <div class="logo"><a href={% url "main-page" %}>BankApp</a></div>
             <ul class="nav-links">
                 <li><a href={% url "main-page" %}>Home</a></li>
                 <li><a href={% url "login-page" %}>Login</a></li>
-                <li><a href="#">Create Account</a></li>
+                <li><a href={% url "create-acc-page" %}>Create Account</a></li>
                 <li><a href="#">Transfer Money</a></li>
             </ul>
         </nav>
