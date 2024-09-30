@@ -1,1 +1,42 @@
-you logged in
+{% extends "main/base.html" %}
+{% load static %}
+{% block title %}Dashboard{% endblock %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <header>
+        <div class="logo">
+            <a href="{% url 'main-page' %}">BankApp</a>
+        </div>
+        <div class="user-info">
+            <p>Welcome, {{ user.username }} | <a href="{% url 'logout-page' %}">Logout</a></p>
+        </div>
+    </header>
+
+    <div class="dashboard-main">
+        <nav class="sidebar">
+            <ul>
+                <li><a href="#">Overview</a></li>
+                <li><a href="#">Transactions</a></li>
+                <li><a href="#">Transfer Funds</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+        </nav>
+
+        <div class="main-content">
+            <h2>Dashboard Overview</h2>
+            <div class="balance-section">
+                <h3>Your Balance: $10,000</h3>
+            </div>
+            <div class="recent-transactions">
+                <h3>Recent Transactions</h3>
+                <!-- Add transactions list here -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

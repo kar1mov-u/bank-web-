@@ -1,0 +1,77 @@
+/* Container for the dashboard */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Header style */
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+}
+
+header .logo a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+header .user-info p {
+    margin: 0;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #222;
+    padding-top: 20px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 15px 20px;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar ul li a:hover {
+    background-color: #575757;
+}
+
+/* Main content area */
+.dashboard-main {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+.main-content {
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.balance-section h3, .recent-transactions h3 {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.recent-transactions {
+    margin-top: 20px;
+}
