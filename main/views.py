@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .forms import CreateAccountFrom
 from django.db import IntegrityError
+from .models import BankAccount
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.models import User
@@ -43,11 +44,16 @@ def create_acc(request):
         form = CreateAccountFrom(request.POST)
         if form.is_valid():
             try:
-                User.objects.create_user(
+                user=User.objects.create_user(
                 username=form.cleaned_data['username'],
                 password=form.cleaned_data['password'],
                 email = form.cleaned_data['email']
             )
+                BankAccount.objects.create(
+                    user=user,
+                    account_number = "ACC"+str(user.id),
+                    account_type = "savings"
+                )
                 messages.success(request, 'Your account has been created successfully! You can now log in.')
                 return redirect('login-page')
             except IntegrityError:

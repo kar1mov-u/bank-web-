@@ -1,38 +1,63 @@
-/* Container for the dashboard */
-.dashboard-container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+/* Reset margins and padding */
+body, ul {
+    margin: 0;
+    padding: 0;
 }
 
-/* Header style */
-header {
+/* Navbar styling */
+.navbar {
+    background-color: #007bff;
+    padding: 1rem;
+    color: white;
+    z-index: 100;
+    position: relative;
+}
+
+/* Dashboard header */
+.dashboard-header {
     display: flex;
     justify-content: space-between;
-    background-color: #333;
+    align-items: center;
+    background-color: #007bff;
+    padding: 20px;
     color: white;
-    padding: 10px 20px;
+    position: relative;
 }
 
-header .logo a {
+.dashboard-header .logo a {
     color: white;
     text-decoration: none;
-    font-size: 24px;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
-header .user-info p {
-    margin: 0;
+.dashboard-header .user-info {
+    font-size: 1rem;
 }
 
-/* Sidebar */
+.dashboard-header .user-info a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.dashboard-header .user-info a:hover {
+    text-decoration: underline;
+}
+
+/* Sidebar layout */
+.dashboard-main {
+    display: flex;
+    margin-top: 20px;
+}
+
 .sidebar {
     width: 250px;
-    background-color: #222;
-    padding-top: 20px;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
+    background-color: #343a40;
+    color: white;
+    min-height: calc(100vh - 80px); /* Adjust height to exclude navbar */
+    position: sticky;
+    top: 80px; /* Height of navbar */
 }
 
 .sidebar ul {
@@ -40,38 +65,34 @@ header .user-info p {
     padding: 0;
 }
 
-.sidebar ul li {
-    padding: 15px 20px;
+.sidebar li {
+    padding: 15px;
 }
 
-.sidebar ul li a {
+.sidebar li a {
     color: white;
     text-decoration: none;
+}
+
+.sidebar li a:hover {
+    background-color: #495057;
     display: block;
 }
 
-.sidebar ul li a:hover {
-    background-color: #575757;
-}
-
 /* Main content area */
-.dashboard-main {
-    margin-left: 250px;
+.main-content {
+    flex-grow: 1;
     padding: 20px;
 }
 
-.main-content {
-    margin: 0 auto;
-    max-width: 800px;
+.main-content h2, .main-content h3 {
+    margin-bottom: 20px;
 }
 
-.balance-section h3, .recent-transactions h3 {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
+.balance-section {
+    margin-bottom: 30px;
 }
 
 .recent-transactions {
-    margin-top: 20px;
+    margin-bottom: 30px;
 }

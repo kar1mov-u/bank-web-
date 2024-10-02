@@ -1,4 +1,4 @@
-{% extends "main/base.html" %}
+{% extends "main/base_auth.html" %}
 {% load static %}
 {% block title %}Dashboard{% endblock %}
 
@@ -8,7 +8,7 @@
 
 {% block content %}
 <div class="dashboard-container">
-    <header>
+    <header class="dashboard-header">
         <div class="logo">
             <a href="{% url 'main-page' %}">BankApp</a>
         </div>
@@ -16,7 +16,7 @@
             <p>Welcome, {{ user.username }} | <a href="{% url 'logout-page' %}">Logout</a></p>
         </div>
     </header>
-
+    
     <div class="dashboard-main">
         <nav class="sidebar">
             <ul>
