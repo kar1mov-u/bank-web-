@@ -1,0 +1,29 @@
+{% extends "main/base_auth.html" %}
+{% load static %}
+{% block title %}Profile{% endblock %}
+{% block link %} 
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+
+{% endblock  %}
+{% block content %}
+<div class="profile-container">
+    <h2>User Profile</h2>
+    
+    <div class="user-info">
+        <h3>Personal Information</h3>
+        <p><strong>Username:</strong> {{ user.username }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+    </div>
+    
+    {% if bank_account %}
+    <div class="bank-info">
+        <h3>Bank Account Information</h3>
+        <p><strong>Account Number:</strong> {{ bank_account.account_number }}</p>
+        <p><strong>Account Type:</strong> {{ bank_account.account_type }}</p>
+        <p><strong>Balance:</strong> ${{ bank_account.balance }}</p>
+    </div>
+    {% else %}
+    <p>No bank account found for this user.</p>
+    {% endif %}
+</div>
+{% endblock %}
