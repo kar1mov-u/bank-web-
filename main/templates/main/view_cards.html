@@ -1,0 +1,28 @@
+{% extends "main/base_auth.html" %}
+{% load static %}
+
+{% block title %}Your Bank Cards{% endblock %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'css/view_cards.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="cards-container">
+    <h2>Your Bank Cards</h2>
+    
+    {% if cards %}
+        <ul>
+            {% for card in cards %}
+                <li>
+                    Card Number: {{ card.card_number }} | Balance: ${{ card.balance }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You have no bank cards.</p>
+    {% endif %}
+    
+    <a href={% url "add-card-page" %}>Add a New Card</a>
+</div>
+{% endblock %}

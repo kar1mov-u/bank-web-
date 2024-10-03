@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
-from .forms import CreateAccountFrom
+from .forms import CreateAccountFrom,AddCard
 from django.db import IntegrityError
-from .models import BankAccount
+from .models import BankAccount,BankCard
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.models import User
@@ -76,6 +76,33 @@ def profile(request):
         bank_account = None
         
     return render(request,'main/profile.html',{'user':user, 'bank_account':bank_account})
+
+@login_required
+def view_cards(request):
+    user = request.user
+    bank_acc = BankAccount.objects.get(user=user)
+    cards = BankCard.objects.filter(owner=bank_acc)
+    return render(request,'main/view_cards.html',{'cards':cards})
+
+@login_required
+def add_card(request):
+    if request.method =='POST':
+        form = AddCard(request.POST)
+        if form.is_valid():
+            card_num= form.cleaned_data['card_number']
+            bal = form.cleaned_data['balance']
+            user = request.user
+            bank_acc = BankAccount.objects.get(user=user)
+            BankCard.objects.create(
+                card_number= card_num,
+                balance =  bal,
+                owner = bank_acc
+            )
+            messages.success(request, "New card was added successfully")
+            return redirect('bank-cards-page')
+    else:
+        form = AddCard()
+    return render(request,'main/add_card.html',{"form":form})
 
 def log_out(request):
     logout(request)

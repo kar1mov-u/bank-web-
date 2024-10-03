@@ -12,3 +12,20 @@ class CreateAccountFrom(forms.Form):
         
         if password and confirm_password and password != confirm_password:
             raise forms.ValidationError('Passwords do not match')
+    
+from django import forms
+
+class AddCard(forms.Form):
+    card_number = forms.CharField(
+        max_length=16,
+        label="Card Number",
+        help_text="Enter your 16-digit card number.",
+        widget=forms.TextInput(attrs={'placeholder': 'Card Number', 'pattern': '\d{16}', 'title': '16-digit card number'})
+    )
+    balance = forms.DecimalField(
+        max_digits=15,
+        decimal_places=2,
+        label="Balance",
+        help_text="Enter the initial balance for this card.",
+        widget=forms.NumberInput(attrs={'placeholder': 'Balance'})
+    )

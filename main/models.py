@@ -15,3 +15,10 @@ class BankAccount(models.Model):
     def __str__(self):
         return f"{self.user.username}'s {self.account_type.capitalize()} Account"
     
+class BankCard(models.Model):
+    card_number = models.CharField(max_length=16,unique=True)
+    balance = models.DecimalField(max_digits=15, decimal_places=2,default=0.0)  
+    owner = models.ForeignKey(BankAccount, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return f"Card number : {self.card_number}, owned by {self.owner.user.username}"

@@ -5,5 +5,8 @@ urlpatterns = [
     path('login',views.login_view, name ='login-page'),
     path('create-account',views.create_acc,name='create-acc-page'),
     path('logout',views.log_out,name='logout-page'),
-    path('profile',views.profile, name= 'profile-page')
+    path('profile',views.profile, name= 'profile-page'),
+    path('bank-cards',views.view_cards,name="bank-cards-page"),
+    path('add-card', views.add_card, name='add-card-page')
+    
 ]
