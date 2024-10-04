@@ -1,0 +1,71 @@
+/* Ensure the support page styles don't override global styles like the navbar */
+.support-page .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa; /* Light background to separate from the navbar */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.support-page header h1 {
+    text-align: center;
+    color: #343a40;
+    margin-bottom: 20px;
+}
+
+.support-info p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.contact-info {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.contact-info li {
+    margin: 5px 0;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.support-form {
+    margin-top: 30px;
+}
+
+.support-form h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.support-form .form-group {
+    margin-bottom: 15px;
+}
+
+.support-form .form-group label {
+    font-weight: bold;
+}
+
+.support-form .form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.support-form .btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.support-form .btn-primary:hover {
+    background-color: #0056b3;
+}

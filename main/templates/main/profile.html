@@ -25,5 +25,13 @@
     {% else %}
     <p>No bank account found for this user.</p>
     {% endif %}
+    {% if bank_cards %}
+    <h3>Your bank cards:</h3>
+    {% for card in bank_cards %}
+    <p>Card number:{{card.card_number}}  Balance : {{card.balance}}$</p>
+    {% endfor %}
+    {% else %}
+    <p>No Bank card was found</p>
+    {% endif %}
 </div>
 {% endblock %}

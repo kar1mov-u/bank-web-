@@ -13,7 +13,14 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 def index(request):
     if request.user.is_authenticated:
-        return render(request, 'main/home.html')
+        user =request.user
+        bank_acc = BankAccount.objects.get(user=user)
+        cards= BankCard.objects.filter(owner = bank_acc)
+        balance =0
+        if cards:
+            for card in cards:
+                balance+=card.balance
+        return render(request, 'main/home.html',{'balance':balance})
     else:
         return render(request,'main/index.html')
 
@@ -72,10 +79,11 @@ def profile(request):
     user = request.user
     try:
         bank_account = BankAccount.objects.get(user=user)
+        bank_cards = BankCard.objects.filter(owner = bank_account)
     except BankAccount.DoesNotExist: 
         bank_account = None
         
-    return render(request,'main/profile.html',{'user':user, 'bank_account':bank_account})
+    return render(request,'main/profile.html',{'user':user, 'bank_account':bank_account,'bank_cards':bank_cards})
 
 @login_required
 def view_cards(request):
@@ -93,16 +101,25 @@ def add_card(request):
             bal = form.cleaned_data['balance']
             user = request.user
             bank_acc = BankAccount.objects.get(user=user)
-            BankCard.objects.create(
-                card_number= card_num,
-                balance =  bal,
-                owner = bank_acc
-            )
-            messages.success(request, "New card was added successfully")
-            return redirect('bank-cards-page')
+            try:
+                BankCard.objects.create(
+                    card_number= card_num,
+                    balance =  bal,
+                    owner = bank_acc
+                )
+                messages.success(request, "New card was added successfully")
+                return redirect('bank-cards-page')
+                
+            except IntegrityError:
+                form.add_error('card_number', 'A card with this number already exists. Please use a different card number.')
+
+        
     else:
         form = AddCard()
     return render(request,'main/add_card.html',{"form":form})
+
+def support(request):
+    return render(request,'main/support.html')
 
 def log_out(request):
     logout(request)

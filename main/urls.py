@@ -7,6 +7,7 @@ urlpatterns = [
     path('logout',views.log_out,name='logout-page'),
     path('profile',views.profile, name= 'profile-page'),
     path('bank-cards',views.view_cards,name="bank-cards-page"),
-    path('add-card', views.add_card, name='add-card-page')
+    path('add-card', views.add_card, name='add-card-page'),
+    path('support', views.support, name = "support-page")
     
 ]
