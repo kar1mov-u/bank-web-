@@ -1,6 +1,8 @@
 from django.shortcuts import render,redirect
 from .forms import CreateAccountFrom,AddCard
 from django.db import IntegrityError
+from django.db.models import Sum
+
 from .models import BankAccount,BankCard
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -15,12 +17,8 @@ def index(request):
     if request.user.is_authenticated:
         user =request.user
         bank_acc = BankAccount.objects.get(user=user)
-        cards= BankCard.objects.filter(owner = bank_acc)
-        balance =0
-        if cards:
-            for card in cards:
-                balance+=card.balance
-        return render(request, 'main/home.html',{'balance':balance})
+        total_balance = BankCard.objects.filter(owner=bank_acc).aggregate(total=Sum('balance'))['total'] or 0
+        return render(request, 'main/home.html',{'balance':total_balance})
     else:
         return render(request,'main/index.html')
 
