@@ -1,4 +1,5 @@
 from django import forms
+from .models import BankAccount,BankCard
 
 class CreateAccountFrom(forms.Form):
     username = forms.CharField( max_length=150, required=True, label ='Username')
@@ -27,3 +28,28 @@ class AddCard(forms.Form):
         label="Balance",
         widget=forms.NumberInput(attrs={'placeholder': 'Balance'})
     )
+
+class TrasnferForm(forms.Form):
+    
+    sender = forms.ChoiceField(
+        label = "Select Sender Card",
+        choices =[]
+    )
+    reciever = forms.CharField(
+        max_length=16,
+        label="Card Number",
+        widget=forms.TextInput(attrs={'placeholder': 'Card Number', 'pattern': '\d{16}', 'title': '16-digit card number'})
+    )
+    amount = forms.DecimalField(
+        max_digits=15,
+        decimal_places=2,
+        label="Amount",
+        widget=forms.NumberInput(attrs={'placeholder': 'Amount'})
+    )
+    
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user',None)
+        super(TrasnferForm,self).__init__(*args,**kwargs)
+        if user:
+            cards = BankCard.objects.filter(owner__user=user)
+            self.fields['sender'].choices = [(card.id,f"{card.card_number}- Balance:{card.balance}")for card in cards]

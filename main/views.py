@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .forms import CreateAccountFrom,AddCard
+from .forms import CreateAccountFrom,AddCard,TrasnferForm
 from django.db import IntegrityError
 from django.db.models import Sum
 
@@ -115,6 +115,18 @@ def add_card(request):
     else:
         form = AddCard()
     return render(request,'main/add_card.html',{"form":form})
+
+
+@login_required
+def transfer_money(request):
+    if request.method =="POST":
+        form = TrasnferForm(request.POST,user=request.user)
+        if form.is_valid():
+            pass
+    else:
+        form =TrasnferForm(user=request.user)
+    return render(request,'main/transfer.html',{'form':form})
+        
 
 def support(request):
     return render(request,'main/support.html')

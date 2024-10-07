@@ -1,0 +1,37 @@
+/* Add this to your CSS file or inside a <style> tag in your HTML */
+.transfer-form {
+    max-width: 500px; /* Adjust as needed */
+    margin: 20px auto; /* Center the form */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.transfer-form h2 {
+    text-align: center;
+}
+
+.transfer-form .form-control {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.transfer-form .form-group {
+    margin-bottom: 15px;
+}
+
+.transfer-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.transfer-form button:hover {
+    background-color: #0056b3;
+}

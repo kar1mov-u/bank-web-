@@ -22,3 +22,15 @@ class BankCard(models.Model):
     
     def __str__(self):
         return f"Card number : {self.card_number}, owned by {self.owner.user.username}"
+
+class Transactions(models.Model):
+    sender_card = models.ForeignKey(BankCard,related_name='sent_transactions', on_delete=models.CASCADE)
+    receiver_card = models.ForeignKey(BankAccount,related_name='received_transactions', on_delete=models.CASCADE)
+    amount = models.DecimalField(max_digits=15, decimal_places=2,default=0.0)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=20,choices=[
+        ('success', 'Success'),
+        ('failed', 'Failed'),
+    ])
+    def __str__(self):
+        return f"{self.amount} transferred from {self.sender_card.card_number} to {self.receiver_card.card_number} on {self.timestamp}"

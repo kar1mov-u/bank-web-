@@ -1,0 +1,28 @@
+{% extends 'main/base_auth.html' %}
+
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'css/transfer.css' %}">
+{% endblock %}
+{% block content %}
+<div class="transfer-form">
+    <h2>Transfer Money</h2>
+    <form method="POST" action="#">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.sender.label }}
+            {{ form.sender }}
+        </div>
+        <div class="form-group">
+            {{ form.receiver.label }}
+            {{ form.receiver }}
+        </div>
+        <div class="form-group">
+            {{ form.amount.label }}
+            {{ form.amount }}
+        </div>
+        <button type="submit">Transfer</button>
+    </form>
+</div>
+{% endblock %}

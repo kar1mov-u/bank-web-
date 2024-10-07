@@ -8,6 +8,7 @@ urlpatterns = [
     path('profile',views.profile, name= 'profile-page'),
     path('bank-cards',views.view_cards,name="bank-cards-page"),
     path('add-card', views.add_card, name='add-card-page'),
-    path('support', views.support, name = "support-page")
+    path('support', views.support, name = "support-page"),
+    path('transfer', views.transfer_money, name="transfer-page")
     
 ]
